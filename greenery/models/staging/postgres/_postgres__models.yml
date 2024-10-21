@@ -2,9 +2,52 @@ version: 2
 
 models: 
   - name: stg_postgres__addresses
-    description: "A model with user addresses"  
+    description: "A model with user addresses" 
+
+    columns:
+      - name: address_id
+        description: ''
+        tests:
+         - not_null
+         - unique
+
+      - name: address
+        description: ''
+
+      - name: zipcode
+        description: ''
+        tests:
+          - not_null 
+
+      - name: state
+        description: ''
+
+      - name: country
+        description: ''
+
   - name: stg_postgres__events
     description: "A model with website traffic and order status"
+    columns:
+      - name: event_id
+        tests:
+          - not_null
+          - unique
+    
+      - name: user_id
+        tests:
+          - relationships:
+              to: ref('stg_postgres__users')
+              field: user_id
+
+      - name: event_type
+        tests:  
+          - accepted_values:
+              values:
+               - checkout
+               - package_shipped
+               - add_to_cart
+               - page_view
+
 
   - name: stg_postgres__orders
     description: "A model with customer order details "
