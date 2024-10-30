@@ -48,9 +48,14 @@ models:
                - add_to_cart
                - page_view
 
-
   - name: stg_postgres__orders
-    description: "A model with customer order details "
+    description: ""
+    columns:
+      - name: order_total
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
+              max_value: 1000
 
   - name: stg_postgres__order_items
     description: "A model with order quantities"
