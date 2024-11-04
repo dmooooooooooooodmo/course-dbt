@@ -1,0 +1,18 @@
+version: 2
+
+exposures:
+
+  - name: product_funnel
+    label: product funnel of greenery data
+    type: dashboard
+    maturity: high
+    url: https://app.sigmacomputing.com/corise-dbt/workbook/Greenery-Product-Funnel-4Hvg1bTxq100jM6X6Oyxjw/edit?:nodeId=NARPuOBvsf
+    description: >
+      This dashboard shows product funnel for Greenery
+
+    depends_on:
+      - ref('fact_page_views')
+
+    owner:
+      name: Conner Demo
+      email: conner.demo@me.com
